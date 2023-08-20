@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		F17D6D122A923822002AFD85 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = F17D6D112A923822002AFD85 /* FSCalendar */; };
 		F17D6D142A923D90002AFD85 /* FormattedDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17D6D132A923D90002AFD85 /* FormattedDate.swift */; };
+		F17D6D162A926132002AFD85 /* AddDiaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17D6D152A926132002AFD85 /* AddDiaryView.swift */; };
 		F1A0095B2A90AC8A003E80C1 /* FeelsWhyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A0095A2A90AC8A003E80C1 /* FeelsWhyApp.swift */; };
 		F1A0095D2A90AC8A003E80C1 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A0095C2A90AC8A003E80C1 /* CalendarView.swift */; };
 		F1A0095F2A90AC8B003E80C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1A0095E2A90AC8B003E80C1 /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		F17D6D132A923D90002AFD85 /* FormattedDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormattedDate.swift; sourceTree = "<group>"; };
+		F17D6D152A926132002AFD85 /* AddDiaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDiaryView.swift; sourceTree = "<group>"; };
 		F1A009572A90AC8A003E80C1 /* FeelsWhy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeelsWhy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1A0095A2A90AC8A003E80C1 /* FeelsWhyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelsWhyApp.swift; sourceTree = "<group>"; };
 		F1A0095C2A90AC8A003E80C1 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 			children = (
 				F1A0095A2A90AC8A003E80C1 /* FeelsWhyApp.swift */,
 				F1A0095C2A90AC8A003E80C1 /* CalendarView.swift */,
+				F17D6D152A926132002AFD85 /* AddDiaryView.swift */,
 				F1A0095E2A90AC8B003E80C1 /* Assets.xcassets */,
 				F1A009632A90AC8B003E80C1 /* Persistence.swift */,
 				F1A009652A90AC8B003E80C1 /* FeelsWhy.xcdatamodeld */,
@@ -156,6 +159,7 @@
 			files = (
 				F1A009672A90AC8B003E80C1 /* FeelsWhy.xcdatamodeld in Sources */,
 				F1A009642A90AC8B003E80C1 /* Persistence.swift in Sources */,
+				F17D6D162A926132002AFD85 /* AddDiaryView.swift in Sources */,
 				F1A0095D2A90AC8A003E80C1 /* CalendarView.swift in Sources */,
 				F1A0095B2A90AC8A003E80C1 /* FeelsWhyApp.swift in Sources */,
 				F17D6D142A923D90002AFD85 /* FormattedDate.swift in Sources */,
