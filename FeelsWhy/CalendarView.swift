@@ -78,13 +78,15 @@ struct CalendarViewRepresentable: UIViewRepresentable {
         calendar.delegate = context.coordinator
         calendar.dataSource = context.coordinator
         // returning the intialized calendar
+        calendar.appearance.headerMinimumDissolvedAlpha = 0.12
         calendar.appearance.headerTitleFont = .systemFont(
             ofSize: 30,
-            weight: .black)
+            weight: .bold)
         calendar.appearance.headerTitleColor = .darkGray
         calendar.appearance.headerDateFormat = "MMMM"
         calendar.scrollDirection = .horizontal
         calendar.scope = .month
+        calendar.clipsToBounds = false
         
         return calendar
     }
@@ -120,7 +122,7 @@ struct CalendarViewRepresentable: UIViewRepresentable {
 //    return formatter
 //}()
 
-struct ContentView_Previews: PreviewProvider {
+struct CalendarView_Previews: PreviewProvider {
     static var previews: some View {
         CalendarView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }

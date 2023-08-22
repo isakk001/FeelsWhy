@@ -6,34 +6,80 @@
 //
 
 import SwiftUI
+import Combine
 
 struct AddDiaryView: View {
+    @State var showEmoji = false
+    
     var body: some View {
         VStack {
             Text("How do you feel today?")
-                .foregroundColor(Color(red: 0.28, green: 0.35, blue: 0.46))
+                .foregroundColor(Color("darkBlue"))
                 .font(.title)
             Text("Add emoji to express your feeling")
-                .foregroundColor(Color(red: 0.39, green: 0.51, blue: 0.7))
-            Button {
-                // select emoji
-            } label: {
-                Image(systemName: "plus.circle.fill")
-                    .foregroundColor(.gray)
-                    .opacity(0.3)
-                    .font(.largeTitle)
-                    .padding(10)
-            }
+                .foregroundColor(Color("lightBlue"))
+            SelectEmojiView()
+            //            Button {
+            //                self.showEmoji.toggle()
+            //            } label: {
+            //                Image(systemName: "plus.circle.fill")
+            //                    .resizable()
+            //                    .scaledToFit()
+            //                    .frame(height: 120)
+            //                    .foregroundColor(.gray)
+            //                    .opacity(0.3)
+            //            }
+            //            .sheet(isPresented: $showEmoji) { EmojiPopUpView().offset(y: (UIApplication.shared.windows.first?.safeAreaInsets.bottom)!) }
+            //            .presentationDetents([.fraction(0.5), .medium, .large])
+            //            .padding(.vertical, 30)
             QuestionView(title: "Why?", subtitle: "Why did you feel that way? What happened?")
             QuestionView(title: "Why?", subtitle: "Why did this situation evoke such feelings in you?")
             QuestionView(title: "How?", subtitle: "How would you process this feeling/situation?")
         }
-        .padding(EdgeInsets(top: 50, leading: 5, bottom: 0, trailing: 5))
+    }
+}
+
+struct SelectEmojiView: View {
+    @State var txt = ""
+    @State var show = false
+    
+    var body: some View {
+        
+        Button {
+            self.show.toggle()
+        } label: {
+            if self.txt != "" {
+                TextField("", text: self.$txt)
+                    .font(Font.system(size: UIScreen.main.bounds.height / 6))
+            } else {
+                Image(systemName: "smiley")
+                    .resizable()
+                    .scaledToFit()
+                    .foregroundColor(Color("lightBlue"))
+            }
+        }
+        .clipShape(Circle())
+        .padding()
+        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 5)
+        .sheet(isPresented: $show) {
+            EmojiPopUpView(show: $show, txt: $txt)
+                .presentationDetents([.medium])
+        }
+        //        .frame(height: geometry.size.height * 0.3)
+        //                    EmojiPopUpView(show: $show, txt: $txt)
+        //                .offset(y: self.show ? (UIApplication.shared.windows.first?.safeAreaInsets.bottom)! : UIScreen.main.bounds.height)
+        //        .onAppear {
+        //            NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillChangeFrameNotification, object: nil, queue: .main) {
+        //                (_) in
+        //                self.show = false
+        //            }
+        //        }
     }
 }
 
 struct QuestionView: View {
     
+    @State var diarytxt = ""
     var title: String
     var subtitle: String
     
@@ -47,20 +93,20 @@ struct QuestionView: View {
                 Text(title)
                     .font(.title2)
                     .padding(.trailing, -3)
-                    .foregroundColor(Color(red: 0.28, green: 0.35, blue: 0.46))
+                    .foregroundColor(Color("darkBlue"))
                 Text(subtitle)
                     .font(.caption)
-                    .foregroundColor(Color(red: 0.39, green: 0.51, blue: 0.7))
+                    .foregroundColor(Color("lightBlue"))
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(.leading, -8)
-            Image(systemName: "greaterthan")
-                .resizable()
-                .scaledToFit()
-                .padding(EdgeInsets(top: 0, leading: -180, bottom: 92, trailing: 0))
-                .foregroundColor(.gray)
+            .frame(width: UIScreen.main.bounds.width, alignment: .leading)
+            
+            TextField("write here", text: self.$diarytxt)
+                .font(.caption)
+            
         }
-        .padding()
+        .padding(.bottom, 40)
+        .padding(.leading, 10)
+        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 6, alignment: .topLeading)
     }
 }
 
