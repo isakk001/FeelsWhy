@@ -13,29 +13,40 @@ import CoreData
 
 struct CalendarView: View {
     @Environment(\.managedObjectContext) private var viewContext
-
+    
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
         animation: .default)
     private var items: FetchedResults<Item>
     
     // Added a @State var to track the selected date by user
-    @State var selectedDate: Date = Date()
+    @State public var selectedDate: Date = Date()
+    @State private var navigate = false
     
     var body: some View {
-        VStack {
-            // Passing the selectedDate as Binding
-            CalendarViewRepresentable(selectedDate: $selectedDate)
-                .padding(.vertical, 25)
+        NavigationView {
+            VStack {
+                // Passing the selectedDate as Binding
+                CalendarViewRepresentable(selectedDate: $selectedDate)
+                    .padding(.vertical, 25)
+                    .onChange(of: selectedDate) { newValue in
+                        navigate = true
+                    }
+                NavigationLink(isActive: $navigate) {
+                    AddDiaryView(selectedDate: $selectedDate)
+                } label: {
+                    EmptyView()
+                }
+            }
+            .padding(50)
         }
-        .padding(50)
     }
-
+    
     private func addItem() {
         withAnimation {
             let newItem = Item(context: viewContext)
             newItem.timestamp = Date()
-
+            
             do {
                 try viewContext.save()
             } catch {
@@ -46,11 +57,11 @@ struct CalendarView: View {
             }
         }
     }
-
+    
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
             offsets.map { items[$0] }.forEach(viewContext.delete)
-
+            
             do {
                 try viewContext.save()
             } catch {
@@ -71,7 +82,7 @@ struct CalendarViewRepresentable: UIViewRepresentable {
     // Getting selectedDate as a Binding so that we can update it as
     // user changes their selection
     @Binding var selectedDate: Date
-
+    
     func makeUIView(context: Context) -> FSCalendar {
         // Setting delegate and dateSource of calendar to the
         // values we get from Coordinator
@@ -90,16 +101,16 @@ struct CalendarViewRepresentable: UIViewRepresentable {
         
         return calendar
     }
-
+    
     func updateUIView(_ uiView: FSCalendar, context: Context) {}
-
+    
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
     }
-
+    
     class Coordinator: NSObject, FSCalendarDelegate, FSCalendarDataSource {
         var parent: CalendarViewRepresentable
-
+        
         init(_ parent: CalendarViewRepresentable) {
             self.parent = parent
         }

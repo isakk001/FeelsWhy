@@ -9,15 +9,17 @@ import SwiftUI
 import Combine
 
 struct AddDiaryView: View {
+    @Binding var selectedDate: Date
     @State var showEmoji = false
     
     var body: some View {
         VStack {
             Text("How do you feel today?")
                 .foregroundColor(Color("darkBlue"))
-                .font(.title)
+                .font(.title2)
             Text("Add emoji to express your feeling")
                 .foregroundColor(Color("lightBlue"))
+                .font(.caption)
             SelectEmojiView()
             //            Button {
             //                self.showEmoji.toggle()
@@ -36,6 +38,8 @@ struct AddDiaryView: View {
             QuestionView(title: "Why?", subtitle: "Why did this situation evoke such feelings in you?")
             QuestionView(title: "How?", subtitle: "How would you process this feeling/situation?")
         }
+        .padding(.bottom, -10)
+        .ignoresSafeArea(.all)
     }
 }
 
@@ -50,7 +54,7 @@ struct SelectEmojiView: View {
         } label: {
             if self.txt != "" {
                 TextField("", text: self.$txt)
-                    .font(Font.system(size: UIScreen.main.bounds.height / 6))
+                    .font(Font.system(size: UIScreen.main.bounds.height / 7))
             } else {
                 Image(systemName: "smiley")
                     .resizable()
@@ -59,8 +63,9 @@ struct SelectEmojiView: View {
             }
         }
         .clipShape(Circle())
+        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 7)
         .padding()
-        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 5)
+        .padding(.bottom, 20)
         .sheet(isPresented: $show) {
             EmojiPopUpView(show: $show, txt: $txt)
                 .presentationDetents([.medium])
@@ -91,27 +96,28 @@ struct QuestionView: View {
                 .bold()
             HStack {
                 Text(title)
-                    .font(.title2)
+                    .font(.title3)
                     .padding(.trailing, -3)
                     .foregroundColor(Color("darkBlue"))
                 Text(subtitle)
-                    .font(.caption)
+                    .font(.caption2)
                     .foregroundColor(Color("lightBlue"))
             }
             .frame(width: UIScreen.main.bounds.width, alignment: .leading)
+            .padding(.leading, 10)
             
-            TextField("write here", text: self.$diarytxt)
+            TextField("write here", text: self.$diarytxt, axis: .vertical)
                 .font(.caption)
+                .padding(.leading, 5)
             
         }
-        .padding(.bottom, 40)
-        .padding(.leading, 10)
+//        .padding(.bottom, 40)
         .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 6, alignment: .topLeading)
     }
 }
 
-struct AddDiaryView_Previews: PreviewProvider {
-    static var previews: some View {
-        AddDiaryView()
-    }
-}
+//struct AddDiaryView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AddDiaryView(selectedDate: self.previews as! Binding<Date>)
+//    }
+//}
