@@ -14,7 +14,8 @@ struct FeelsWhyApp: App {
     var body: some Scene {
         WindowGroup {
             CalendarView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .environment(\.managedObjectContext, persistenceController.persistentContainer.viewContext)
         }
     }
 }
+

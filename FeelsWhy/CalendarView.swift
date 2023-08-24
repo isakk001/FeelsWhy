@@ -14,12 +14,18 @@ import CoreData
 struct CalendarView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
+//    @FetchRequest(
+//        entity: FeelsWhy.entity(),
+//        sortDescriptors: [NSSortDescriptor(keyPath: \FeelsWhy.self.selectedDate, ascending: true)], animation: .default)
+//    private var items: FetchedResults<FeelsWhy>
+    
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
-        animation: .default)
-    private var items: FetchedResults<Item>
+        entity: FeelsWhy.entity(),
+        sortDescriptors: [ NSSortDescriptor(keyPath: \FeelsWhy.selectedDate, ascending: false) ])
+    var items: FetchedResults<FeelsWhy>
     
     // Added a @State var to track the selected date by user
+    
     @State public var selectedDate: Date = Date()
     @State private var navigate = false
     
@@ -33,7 +39,7 @@ struct CalendarView: View {
                         navigate = true
                     }
                 NavigationLink(isActive: $navigate) {
-                    AddDiaryView(selectedDate: $selectedDate)
+                    AddDiaryView()
                 } label: {
                     EmptyView()
                 }
@@ -44,8 +50,8 @@ struct CalendarView: View {
     
     private func addItem() {
         withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
+            let newItem = FeelsWhy(context: viewContext)
+            newItem.self.selectedDate = Date()
             
             do {
                 try viewContext.save()
@@ -89,9 +95,9 @@ struct CalendarViewRepresentable: UIViewRepresentable {
         calendar.delegate = context.coordinator
         calendar.dataSource = context.coordinator
         // returning the intialized calendar
-        calendar.appearance.headerMinimumDissolvedAlpha = 0.12
+        calendar.appearance.headerMinimumDissolvedAlpha = 0.13
         calendar.appearance.headerTitleFont = .systemFont(
-            ofSize: 30,
+            ofSize: 28,
             weight: .bold)
         calendar.appearance.headerTitleColor = .darkGray
         calendar.appearance.headerDateFormat = "MMMM"
@@ -135,6 +141,6 @@ struct CalendarViewRepresentable: UIViewRepresentable {
 
 struct CalendarView_Previews: PreviewProvider {
     static var previews: some View {
-        CalendarView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        CalendarView().environment(\.managedObjectContext, PersistenceController.preview.persistentContainer.viewContext)
     }
 }
