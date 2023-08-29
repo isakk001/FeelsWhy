@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22A380" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="FeelsWhy" representedClassName=".FeelsWhy" syncable="YES">
-        <attribute name="diarytxt" optional="YES" attributeType="String"/>
-        <attribute name="selectedDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="howText" optional="YES" attributeType="String"/>
+        <attribute name="selectedDate" optional="YES" attributeType="String"/>
         <attribute name="txt" optional="YES" attributeType="String"/>
+        <attribute name="whyText1" optional="YES" attributeType="String"/>
+        <attribute name="whyText2" optional="YES" attributeType="String"/>
     </entity>
 </model>

@@ -16,8 +16,10 @@ struct PersistenceController {
         let viewContext = result.persistentContainer.viewContext
         for _ in 0..<10 {
             let newItem = FeelsWhy(context: viewContext)
-            newItem.selectedDate = Date()
-            newItem.diarytxt = ""
+            newItem.selectedDate = ""
+            newItem.whyText1 = ""
+            newItem.whyText2 = ""
+            newItem.howText = ""
             newItem.txt = ""
         }
         do {
@@ -31,7 +33,6 @@ struct PersistenceController {
         return result
     }()
 
-//    let container: NSPersistentContainer
     let persistentContainer = NSPersistentContainer(name: "FeelsWhy")
 
 
@@ -56,6 +57,6 @@ struct PersistenceController {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
-//        persistentContainer.viewContext.automaticallyMergesChangesFromParent = true
+        persistentContainer.viewContext.automaticallyMergesChangesFromParent = true
     }
 }

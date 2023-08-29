@@ -20,53 +20,5 @@
             landmarkType = "14">
          </BreakpointContent>
       </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "E56E56D5-CE6C-40FE-9617-2EA92509466C"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FeelsWhy/AddDiaryView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
-            landmarkName = "body"
-            landmarkType = "24">
-            <Locations>
-               <Location
-                  uuid = "E56E56D5-CE6C-40FE-9617-2EA92509466C - dd740adfa11b75d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "FeelsWhy.SelectEmojiView.body.getter : some"
-                  moduleName = "FeelsWhy"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yisak/Documents/NC/FeelsWhy/FeelsWhy/AddDiaryView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "62"
-                  endingLineNumber = "62"
-                  offsetFromSymbolStart = "656">
-               </Location>
-               <Location
-                  uuid = "E56E56D5-CE6C-40FE-9617-2EA92509466C - 55795a04b3014878"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in FeelsWhy.SelectEmojiView.body.getter : some"
-                  moduleName = "FeelsWhy"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yisak/Documents/NC/FeelsWhy/FeelsWhy/AddDiaryView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "63"
-                  endingLineNumber = "63"
-                  offsetFromSymbolStart = "40">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

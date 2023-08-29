@@ -43,8 +43,6 @@ struct EmojiPopUpView: View {
                 }
                 .padding(.top)
             }
-//            .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-            .padding(.vertical, UIApplication.shared.windows.first?.safeAreaInsets.bottom)
             .cornerRadius(25)
             
             Button {
@@ -70,10 +68,4 @@ struct EmojiPopUpView: View {
         }
         return emojis
     }
-    
-//    struct EmojiPopUpView_Previews: PreviewProvider {
-//        static var previews: some View {
-//            EmojiPopUpView(show: self.$show, txt: self.$txt)
-//        }
-//    }
 }

@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		F1111BB02A95333700C7D26C /* FeelsWhy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1111BAF2A95333700C7D26C /* FeelsWhy.swift */; };
 		F17D6D122A923822002AFD85 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = F17D6D112A923822002AFD85 /* FSCalendar */; };
-		F17D6D142A923D90002AFD85 /* FormattedDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17D6D132A923D90002AFD85 /* FormattedDate.swift */; };
 		F17D6D162A926132002AFD85 /* AddDiaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17D6D152A926132002AFD85 /* AddDiaryView.swift */; };
 		F17D6D182A92ED0E002AFD85 /* EmojiPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17D6D172A92ED0E002AFD85 /* EmojiPopUpView.swift */; };
 		F1A0095B2A90AC8A003E80C1 /* FeelsWhyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A0095A2A90AC8A003E80C1 /* FeelsWhyApp.swift */; };
@@ -18,11 +17,13 @@
 		F1A009622A90AC8B003E80C1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1A009612A90AC8B003E80C1 /* Preview Assets.xcassets */; };
 		F1A009642A90AC8B003E80C1 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A009632A90AC8B003E80C1 /* Persistence.swift */; };
 		F1A009672A90AC8B003E80C1 /* FeelsWhy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F1A009652A90AC8B003E80C1 /* FeelsWhy.xcdatamodeld */; };
+		F1E960002A9B388E00ADD9A8 /* InterfaceBuilderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E95FFF2A9B388E00ADD9A8 /* InterfaceBuilderViewController.swift */; };
+		F1EC009A2A9799AA0078619D /* SelectEmojiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EC00992A9799AA0078619D /* SelectEmojiView.swift */; };
+		F1EC009C2A979A440078619D /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EC009B2A979A440078619D /* QuestionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F1111BAF2A95333700C7D26C /* FeelsWhy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelsWhy.swift; sourceTree = "<group>"; };
-		F17D6D132A923D90002AFD85 /* FormattedDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormattedDate.swift; sourceTree = "<group>"; };
 		F17D6D152A926132002AFD85 /* AddDiaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDiaryView.swift; sourceTree = "<group>"; };
 		F17D6D172A92ED0E002AFD85 /* EmojiPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiPopUpView.swift; sourceTree = "<group>"; };
 		F1A009572A90AC8A003E80C1 /* FeelsWhy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeelsWhy.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -32,6 +33,9 @@
 		F1A009612A90AC8B003E80C1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F1A009632A90AC8B003E80C1 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		F1A009662A90AC8B003E80C1 /* FeelsWhy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FeelsWhy.xcdatamodel; sourceTree = "<group>"; };
+		F1E95FFF2A9B388E00ADD9A8 /* InterfaceBuilderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceBuilderViewController.swift; sourceTree = "<group>"; };
+		F1EC00992A9799AA0078619D /* SelectEmojiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectEmojiView.swift; sourceTree = "<group>"; };
+		F1EC009B2A979A440078619D /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,15 +70,13 @@
 			isa = PBXGroup;
 			children = (
 				F1A0095A2A90AC8A003E80C1 /* FeelsWhyApp.swift */,
-				F1A0095C2A90AC8A003E80C1 /* CalendarView.swift */,
-				F17D6D152A926132002AFD85 /* AddDiaryView.swift */,
-				F17D6D172A92ED0E002AFD85 /* EmojiPopUpView.swift */,
+				F1EC009D2A979A730078619D /* Views */,
 				F1A0095E2A90AC8B003E80C1 /* Assets.xcassets */,
 				F1A009632A90AC8B003E80C1 /* Persistence.swift */,
+				F1111BAF2A95333700C7D26C /* FeelsWhy.swift */,
 				F1A009652A90AC8B003E80C1 /* FeelsWhy.xcdatamodeld */,
 				F1A009602A90AC8B003E80C1 /* Preview Content */,
-				F17D6D132A923D90002AFD85 /* FormattedDate.swift */,
-				F1111BAF2A95333700C7D26C /* FeelsWhy.swift */,
+				F1E95FFF2A9B388E00ADD9A8 /* InterfaceBuilderViewController.swift */,
 			);
 			path = FeelsWhy;
 			sourceTree = "<group>";
@@ -85,6 +87,18 @@
 				F1A009612A90AC8B003E80C1 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F1EC009D2A979A730078619D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F1A0095C2A90AC8A003E80C1 /* CalendarView.swift */,
+				F17D6D152A926132002AFD85 /* AddDiaryView.swift */,
+				F1EC00992A9799AA0078619D /* SelectEmojiView.swift */,
+				F1EC009B2A979A440078619D /* QuestionView.swift */,
+				F17D6D172A92ED0E002AFD85 /* EmojiPopUpView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -167,10 +181,12 @@
 				F1A009672A90AC8B003E80C1 /* FeelsWhy.xcdatamodeld in Sources */,
 				F1A009642A90AC8B003E80C1 /* Persistence.swift in Sources */,
 				F17D6D162A926132002AFD85 /* AddDiaryView.swift in Sources */,
+				F1E960002A9B388E00ADD9A8 /* InterfaceBuilderViewController.swift in Sources */,
 				F1A0095D2A90AC8A003E80C1 /* CalendarView.swift in Sources */,
 				F1A0095B2A90AC8A003E80C1 /* FeelsWhyApp.swift in Sources */,
-				F17D6D142A923D90002AFD85 /* FormattedDate.swift in Sources */,
 				F17D6D182A92ED0E002AFD85 /* EmojiPopUpView.swift in Sources */,
+				F1EC009C2A979A440078619D /* QuestionView.swift in Sources */,
+				F1EC009A2A9799AA0078619D /* SelectEmojiView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
