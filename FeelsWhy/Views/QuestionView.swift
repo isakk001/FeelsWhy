@@ -9,7 +9,7 @@ import SwiftUI
 
 struct QuestionView: View {
     
-    @State var diarytxt: String
+    @Binding var diarytxt: String
     var title: String
     var subtitle: String
     

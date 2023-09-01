@@ -20,7 +20,7 @@ struct PersistenceController {
             newItem.whyText1 = ""
             newItem.whyText2 = ""
             newItem.howText = ""
-            newItem.txt = ""
+            newItem.emoji = ""
         }
         do {
             try viewContext.save()

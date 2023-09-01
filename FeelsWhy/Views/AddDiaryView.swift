@@ -20,28 +20,15 @@ struct AddDiaryView: View {
     var items: FetchedResults<FeelsWhy>
     
     // 일기가 날짜 별로 저장되어야 함 -> 바인딩 어케 하지
-    @Binding var selectedDate: String
-    @State var txt: String = ""
-    @State var whyText1: String = ""
-    @State var whyText2: String = ""
-    @State var howText: String = ""
-    @State var diaryData: DiaryData = DiaryData()
+    /*
+     @State var txt: String = ""
+     @State var whyText1: String = ""
+     @State var whyText2: String = ""
+     @State var howText: String = ""
+     */
     
-//    init(selectedDate: Binding<String>) {
-//            _selectedDate = selectedDate
-//            // 해당 날짜에 해당하는 데이터를 불러와 diaryData에 설정하는 코드를 추가
-//            let fetchRequest: NSFetchRequest<FeelsWhy> = FeelsWhy.fetchRequest()
-//            fetchRequest.predicate = NSPredicate(format: "selectedDate == %@", selectedDate.wrappedValue)
-//
-//            if let diary = try? context.fetch(fetchRequest).first {
-//                diaryData = DiaryData(
-//                    txt: diary.txt,
-//                    whyText1: diary.whyText1,
-//                    whyText2: diary.whyText2,
-//                    howText: diary.howText
-//                )
-//            }
-//        }
+    @Binding var selectedDate: String
+    @StateObject var diaryData: DiaryDataModel = DiaryDataModel()
     
     
     var body: some View {
@@ -52,25 +39,11 @@ struct AddDiaryView: View {
             Text("Add emoji to express your feeling")
                 .foregroundColor(Color("lightBlue"))
                 .font(.caption)
-            SelectEmojiView(txt: $txt)
-            QuestionView(diarytxt: whyText1, title: "Why?", subtitle: "Why did you feel that way? What happened?")
-            QuestionView(diarytxt: whyText2, title: "Why?", subtitle: "Why did this situation evoke such feelings in you?")
-            QuestionView(diarytxt: howText, title: "How?", subtitle: "Hobw would you process this feeling/situation?")
+            SelectEmojiView(emoji: $diaryData.emoji)
+            QuestionView(diarytxt: $diaryData.whyText1, title: "Why?", subtitle: "Why did you feel that way? What happened?")
+            QuestionView(diarytxt: $diaryData.whyText2, title: "Why?", subtitle: "Why did this situation evoke such feelings in you?")
+            QuestionView(diarytxt: $diaryData.howText, title: "How?", subtitle: "Hobw would you process this feeling/situation?")
             
-//            NavigationLink {
-//                CalendarView()
-//            } label: {
-//                Image(systemName: "checkmark.circle.fill")
-//                    .resizable()
-//                    .scaledToFit()
-//                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 20)
-//                    .foregroundColor(Color("lightBlue"))
-//            }
-//            .onTapGesture {
-//                print("onTapGesture")
-//                // Tap했을 때 적은 게 저장되어야 함
-//                saveDiary(txt: $txt, diarytxt: $diarytxt)
-//            }
             Button {
 //                saveDiary(txt: txt, whyText1: whyText1, whyText2: whyText2, howText: howText, selectedDate: selectedDate)
                 saveDiary(diaryData: diaryData)
@@ -89,33 +62,65 @@ struct AddDiaryView: View {
             .ignoresSafeArea(.all)
         }
         .navigationTitle("\(selectedDate)")
+//        .onAppear {
+////            print("onAppear 시작")
+//            var dictionary: [String : DiaryData] = [:]
+////            print("for문 시작")
+//            for item in self.items {
+////                print("for문 내부")
+//                var tempDairyData: DiaryData = DiaryData()
+////                print("\(item.selectedDate)")
+////                print("\(item.txt)")
+////                print("\(item.whyText1)")
+////                print("\(item.whyText2)")
+////                print("\(item.howText)")
+////                print("for문 데이터 저장")
+//                tempDairyData.txt = item.txt
+//                tempDairyData.whyText1 = item.whyText1
+//                tempDairyData.whyText2 = item.whyText2
+//                tempDairyData.howText = item.howText
+////                print("for문 데이터 dictionary에 저장")
+//                dictionary[item.selectedDate] = tempDairyData
+//            }
+//            print("for문 끝")
+//            @StateObject var data: DiaryData = DiaryData()
+//            var result = dictionary[selectedDate]
+//            print("result 결과")
+//            print(result?.txt ?? "")
+//            print(result?.whyText1 ?? "")
+//            print(result?.whyText2 ?? "")
+//            print(result?.howText ?? "")
+//        }
     }
     
 //    private func saveDiary(txt: String, whyText1: String, whyText2: String, howText: String, selectedDate: String) {
-    private func saveDiary(diaryData: DiaryData) {
+    private func saveDiary(diaryData: DiaryDataModel) {
         
         let diary = FeelsWhy(context: context)
-        diary.txt = diaryData.txt
-        diary.whyText1 = diaryData.whyText1
-        diary.whyText2 = diaryData.whyText2
-        diary.howText = diaryData.howText
-        diary.selectedDate = selectedDate
+        
+         diary.emoji = diaryData.emoji
+         diary.whyText1 = diaryData.whyText1
+         diary.whyText2 = diaryData.whyText2
+         diary.howText = diaryData.howText
+         diary.selectedDate = selectedDate
+        
         
         do {
-            dismiss()
+//            dismiss()
             try context.save()
             print(context)
+            dismiss()
         } catch {
             print(error)
         }
     }
 }
 
-struct DiaryData {
-    var txt: String = ""
-    var whyText1: String = ""
-    var whyText2: String = ""
-    var howText: String = ""
+class DiaryDataModel: ObservableObject {
+    @Published var emoji: String = ""
+    @Published var whyText1: String = ""
+    @Published var whyText2: String = ""
+    @Published var howText: String = ""
 }
 
 

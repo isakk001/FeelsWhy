@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SelectEmojiView: View {
-    @Binding var txt : String
+    @Binding var emoji : String
     @State var show = false
     
     var body: some View {
@@ -16,8 +16,8 @@ struct SelectEmojiView: View {
         Button {
             self.show.toggle()
         } label: {
-            if self.txt != "" {
-                TextField("", text: self.$txt)
+            if self.emoji != "" {
+                TextField("", text: self.$emoji)
                     .font(Font.system(size: UIScreen.main.bounds.height / 9))
             } else {
                 Image(systemName: "smiley")
@@ -31,7 +31,7 @@ struct SelectEmojiView: View {
         .padding()
         .padding(.bottom, 20)
         .sheet(isPresented: $show) {
-            EmojiPopUpView(show: $show, txt: $txt)
+            EmojiPopUpView(show: $show, txt: $emoji)
                 .presentationDetents([.medium])
         }
     }

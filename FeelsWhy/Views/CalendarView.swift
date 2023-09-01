@@ -21,9 +21,10 @@ struct CalendarView: View {
     
     // Added a @State var to track the selected date by user
     
-    @State public var selectedDate: String = ""
+    @State var selectedDate: String = ""
     @State private var navigate = false
-    
+    // selectedDateClass.selectedDate -- static var selectedDate
+    // selectedDate.selectedDate
     var body: some View {
         NavigationStack {
             CalendarViewRepresentable(selectedDate: $selectedDate)
@@ -72,6 +73,9 @@ struct CalendarView: View {
 //    }
 }
 
+//class selectedDateClass: ObservableObject {
+//    @Published var selectedDate: String = ""
+//}
 
 struct CalendarViewRepresentable: UIViewRepresentable {
     typealias UIViewType = FSCalendar
@@ -81,7 +85,7 @@ struct CalendarViewRepresentable: UIViewRepresentable {
     // Getting selectedDate as a Binding so that we can update it as
     // user changes their selection
     @Binding var selectedDate: String
-
+    
     func makeUIView(context: Context) -> FSCalendar {
         // Setting delegate and dateSource of calendar to the
         // values we get from Coordinator
