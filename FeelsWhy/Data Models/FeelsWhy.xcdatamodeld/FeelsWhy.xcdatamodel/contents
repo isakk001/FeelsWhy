@@ -3,8 +3,12 @@
     <entity name="FeelsWhy" representedClassName=".FeelsWhy" syncable="YES">
         <attribute name="emoji" optional="YES" attributeType="String"/>
         <attribute name="howText" optional="YES" attributeType="String"/>
-        <attribute name="selectedDate" optional="YES" attributeType="String"/>
         <attribute name="whyText1" optional="YES" attributeType="String"/>
         <attribute name="whyText2" optional="YES" attributeType="String"/>
+        <relationship name="date" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SelectedDate" inverseName="content" inverseEntity="SelectedDate"/>
+    </entity>
+    <entity name="SelectedDate" representedClassName="SelectedDate" syncable="YES" codeGenerationType="class">
+        <attribute name="selectedDate" optional="YES" attributeType="String"/>
+        <relationship name="content" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FeelsWhy" inverseName="date" inverseEntity="FeelsWhy"/>
     </entity>
 </model>

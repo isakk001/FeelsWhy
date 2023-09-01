@@ -73,10 +73,6 @@ struct CalendarView: View {
 //    }
 }
 
-//class selectedDateClass: ObservableObject {
-//    @Published var selectedDate: String = ""
-//}
-
 struct CalendarViewRepresentable: UIViewRepresentable {
     typealias UIViewType = FSCalendar
 
